@@ -1,0 +1,110 @@
+.service-grid {
+  padding-top: 12px;
+  padding-bottom: 8px;
+  overflow-x: hidden;
+}
+
+.service-grid__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 148px;
+  min-width: 0;
+  padding: 16px 14px 14px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(215, 217, 222, 0.5);
+  text-align: right;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-card:active {
+  transform: scale(0.98);
+}
+
+@keyframes service-card-glow-breathe {
+  0%,
+  100% {
+    border-color: rgba(215, 217, 222, 0.5);
+    box-shadow:
+      var(--shadow-sm),
+      0 0 0 0 rgba(23, 154, 156, 0);
+  }
+  50% {
+    border-color: rgba(23, 154, 156, 0.35);
+    box-shadow:
+      var(--shadow-sm),
+      0 0 0 2px rgba(23, 154, 156, 0.25),
+      0 0 14px rgba(23, 154, 156, 0.12);
+  }
+}
+
+.service-card--highlight {
+  animation: service-card-glow-breathe 3.5s ease-in-out infinite;
+}
+
+.service-card--highlight:active {
+  animation: none;
+  transform: scale(0.98);
+  border-color: rgba(215, 217, 222, 0.5);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card--highlight {
+    animation: none;
+  }
+}
+
+.service-card__text {
+  flex: 1;
+  z-index: 1;
+}
+
+.service-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.service-card__desc {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--gray-500);
+  line-height: 1.55;
+  max-width: 130px;
+}
+
+.service-card__icon {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  z-index: 1;
+  width: 72px;
+  height: 64px;
+  pointer-events: none;
+}
+
+.service-card__arrow {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+}

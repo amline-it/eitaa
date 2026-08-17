@@ -1,0 +1,195 @@
+:root {
+  --teal-50: #e8f7f7;
+  --teal-100: #ccf0f1;
+  --teal-200: #a8e4e5;
+  --teal-500: #179a9c;
+  --teal-600: #0f8a8c;
+  --teal-700: #007879;
+  --teal-800: #006668;
+  --rust-600: #ad3a10;
+  --gray-50: #f7f8fb;
+  --gray-100: #f2f4fa;
+  --gray-200: #e8ebf2;
+  --gray-300: #d7d9de;
+  --gray-400: #999b9e;
+  --gray-500: #878787;
+  --gray-600: #676767;
+  --gray-700: #4a4a4c;
+  --gray-900: #1e1e1f;
+  --blue-500: #3d92f5;
+  --green-500: #53bb6a;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(30, 30, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(30, 30, 31, 0.08);
+  --shadow-nav: 0 -8px 20px rgba(0, 0, 0, 0.06);
+  --radius-xl: 24px;
+  --radius-lg: 20px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --font: 'Vazirmatn', 'IRANSansX', tahoma, sans-serif;
+  --phone-width: 390px;
+  --phone-height: 844px;
+  --nav-height: 88px;
+  --header-height: 72px;
+  --content-bottom-gap: 12px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://fonts.bunny.net/vazirmatn/files/vazirmatn-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://fonts.bunny.net/vazirmatn/files/vazirmatn-arabic-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://fonts.bunny.net/vazirmatn/files/vazirmatn-arabic-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gray-900);
+  background: #dfe5ec;
+  -webkit-font-smoothing: antialiased;
+  direction: rtl;
+}
+
+#root {
+  height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 12px;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.app-shell {
+  width: var(--phone-width);
+  max-width: 100%;
+  height: min(var(--phone-height), calc(100dvh - 48px));
+  min-height: 0;
+  background: var(--gray-50);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.18);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.app-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  padding-bottom: calc(var(--content-bottom-gap) + var(--safe-bottom));
+  scrollbar-width: none;
+}
+
+.app-content::-webkit-scrollbar {
+  display: none;
+}
+
+.section-padding {
+  padding-inline: 20px;
+  max-width: 100%;
+}
+
+/* Real mobile: full-screen app, no desktop phone frame */
+@media (max-width: 480px), ((hover: none) and (pointer: coarse)) {
+  body {
+    background: var(--gray-50);
+  }
+
+  #root {
+    padding: 0;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+  }
+
+  .app-shell {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    border-radius: 0;
+    box-shadow: none;
+    padding-top: var(--safe-top);
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+  }
+
+  .app-content {
+    padding-bottom: calc(var(--content-bottom-gap) + var(--safe-bottom));
+  }
+}
